@@ -122,6 +122,10 @@ router.get("/films/:filmid", function (req, res) {
   });
 
 
+
+
+
+
 router.get('/test-you', function(req, res){
     
     res.send('This is the second routes implementation')
@@ -130,5 +134,53 @@ router.get('/test-you', function(req, res){
 router.get('/give-me-students-data',function(req, res){
 
 })
+
+
+//Q1.
+   // -write an api which gives the missing number in an array of integers starting from 1….e.g [1,2,3,5,6,7] : 4 is missing
+ // Your route code will look like this
+
+
+//1. method 
+router.get("/soln1", function (req, res) {
+  //     //logic : sum of numbers is n(n+1)/2..so get sum of all numbers in array. now take sum of numbers till last digit in the array
+      let arr= [1,2,3,5,6,7]
+      let missingNumber
+      
+      let sumArr=0;
+      ///LOGIC WILL GO HERE 
+      let lastNumber=arr[arr.length-1]
+      for (let i= 0; i < arr.length; i++) {
+          sumArr = sumArr+arr[i]; 
+      }
+      missingNumber=(lastNumber*(lastNumber+1))/2-sumArr
+  
+      if(missingNumber==0){
+          missingNumber="no any number is missing";
+      }
+      res.send(  { data: missingNumber  }  );
+  });
+  
+  
+  
+  
+  //Q2. 
+  // -write an api which gives the missing number in an array of integers starting from anywhere….e.g [33, 34, 35, 37, 38]: 36 is missing
+  // Your route code will look like this
+  router.get("/soln2", function (req, res) {
+          //logic : sum of n consecutive numbers is [ n * (first + last) / 2  ]..so get sum of all numbers in array. now take sum of n consecutive numbers.. n would be length+1 as 1 number is missing
+          let arr= [33, 34, 35,37, 38]
+          let missingNumber1
+          ///LOGIC WILL GO HERE 
+          let totalNumber=(arr.length+1)*(arr[0]+arr[arr.length-1])/2
+          console.log(totalNumber)
+          let arrSum3=0;
+          for (let i = 0; i <arr.length; i++) {
+              arrSum3 =arrSum3+arr[i];
+          }
+          console.log(arrSum3);
+          missingNumber1=totalNumber-arrSum3;
+          res.send(  { data: missingNumber1  }  );
+  });
 module.exports = router;
 // adding this comment for no reason
