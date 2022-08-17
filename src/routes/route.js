@@ -12,8 +12,27 @@ router.post("/createUser", UserController.createUser  )
 
 router.get("/getUsersData", UserController.getUsersData)
 
-router.post("/createBook", BookController.createBook  )
+
 
 router.get("/getBooksData", BookController.getBooksData)
+
+
+//assignment solution is here
+router.post("/createBook", BookController.createBook  )
+
+router.get("/bookList", BookController.booksList);
+
+//takes year as input in post request
+router.post("/getBooksInYear", BookController.getBookInYear);
+
+router.get("/getXINRBooks", BookController.getXINRBooks);
+
+//take particular input and give getParticularBooks---
+router.post("/getParticularBooks", BookController.getParticularBook);
+
+//getRandomBooks - returns books that are available in stock
+router.get("/getRandomBooks", BookController.getRandomBooks);
+
+
 
 module.exports = router;
